@@ -13,6 +13,12 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
 	let cellID = "cellID"
 	let cellColors = [UIColor.green, UIColor.red, UIColor.orange, UIColor.yellow]
 	var database = [Beer]()
+	
+	lazy var menuBarView: MenuBarView = {
+		let mb = MenuBarView()
+		mb.mainViewController = self
+		return mb
+	}()
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -23,7 +29,9 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
 		title = "MyDrinks"
 		collectionView?.backgroundColor = UIColor.white
 		collectionView?.register(MainViewCell.self, forCellWithReuseIdentifier: cellID)
-		setupCollectionView()
+		setupViews()
+		setConstraints()
+	
 		
 	}
 	
@@ -46,10 +54,13 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-		return CGSize(width: collectionView.frame.width, height: collectionView.frame.height - 100)
+		return CGSize(width: collectionView.frame.width, height: collectionView.frame.height - 130)
 	}
 	
-	func setupCollectionView() {
+	func setupViews() {
+		
+		view.addSubview(menuBarView)
+
 		
 		collectionView?.alwaysBounceHorizontal = true
 		collectionView?.isPagingEnabled = true
@@ -57,11 +68,13 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
 		if let flowLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
 			flowLayout.scrollDirection = .horizontal
 			flowLayout.minimumLineSpacing = 0
-		
 		}
+		collectionView?.contentInset = UIEdgeInsetsMake(50, 0, 0, 0)
+		collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 0, 0)
 	}
 	func setConstraints() {
-
+		view.addConstraintsWithFormat("H:|[v0]|", views: menuBarView)
+		view.addConstraintsWithFormat("V:|-63-[v0(60)]", views: menuBarView)
 		
 	}
 	
