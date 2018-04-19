@@ -12,12 +12,78 @@ class MenuBarView: UIView {
 	
 	let filtersButton: UIButton = {
 		let button = UIButton()
-		button.setImage(UIImage(named: "filters"), for: UIControlState.normal)
-//		button.frame.size = CGSize(width: 15, height: 15)
+		let origImage = UIImage(named: "filters")
+		button.tintColor = UIColor.borderLineAndTintColor
+		let tintedImage = origImage?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+		button.setImage(tintedImage, for: UIControlState.normal)
 		button.contentMode = .center
 		button.imageView?.contentMode = .scaleToFill
-		button.backgroundColor = UIColor.red
+		button.backgroundColor = UIColor.clear
 		return button
+	}()
+	
+//	let viewStyleButton: UIButton = {
+//		let button = UIButton()
+//		let origImage = UIImage(named: "list")
+//		button.tintColor = UIColor.borderLineAndTintColor
+//		let tintedImage = origImage?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+//		button.setImage(tintedImage, for: UIControlState.normal)
+//		let origImage2 = UIImage(named: "grid")
+//		let tintedImage2 = origImage2?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+//		button.setImage(tintedImage2, for: UIControlState.selected)
+//		button.contentMode = .center
+//		button.imageView?.contentMode = .scaleToFill
+//		button.backgroundColor = UIColor.clear
+//		return button
+//	}()
+	
+	let searchButton: UIButton = {
+		let button = UIButton()
+		let origImage = UIImage(named: "search_square")
+		button.tintColor = UIColor.borderLineAndTintColor
+		let tintedImage = origImage?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+		button.setImage(tintedImage, for: UIControlState.normal)
+		button.contentMode = .center
+		button.imageView?.contentMode = .scaleToFill
+		button.backgroundColor = UIColor.clear
+		return button
+	}()
+	
+	let addButton: UIButton = {
+		let button = UIButton()
+		let origImage = UIImage(named: "add")
+		button.tintColor = UIColor.borderLineAndTintColor
+		let tintedImage = origImage?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+		button.setImage(tintedImage, for: UIControlState.normal)
+		button.contentMode = .center
+		button.imageView?.contentMode = .scaleToFill
+		button.backgroundColor = UIColor.clear
+		return button
+	}()
+	
+	let searchTextField: UITextField = {
+		let textfield = UITextField()
+		textfield.textColor = UIColor.borderLineAndTintColor
+		textfield.attributedPlaceholder = NSAttributedString(string: "Search", attributes: [NSAttributedStringKey.foregroundColor: UIColor.borderLineAndTintColor])
+		textfield.backgroundColor = UIColor.backgroundColor.withAlphaComponent(0.3)
+		textfield.autocapitalizationType = .none
+		textfield.autocorrectionType = .no
+//		textfield.borderStyle = .roundedRect
+//		textfield.placeholder = "Search"
+		textfield.textAlignment = .center
+		textfield.font = UIFont.preferredFont(forTextStyle: .title2)
+		textfield.clearButtonMode = .whileEditing
+		textfield.layer.cornerRadius = 5
+		textfield.layer.borderWidth = 0.5
+		textfield.layer.borderColor = UIColor.borderLineAndTintColor.cgColor
+		textfield.clipsToBounds = true
+		return textfield
+	}()
+	
+	let dividendLine: UIView = {
+		let view = UIView()
+		view.backgroundColor = UIColor.borderLineAndTintColor
+		return view
 	}()
 	
 	var mainViewController: MainViewController?
@@ -26,8 +92,12 @@ class MenuBarView: UIView {
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		backgroundColor = UIColor.black.withAlphaComponent(0.6)
+		backgroundColor = UIColor.backgroundColor
 		addSubview(filtersButton)
+		addSubview(searchButton)
+		addSubview(addButton)
+		addSubview(searchTextField)
+		addSubview(dividendLine)
 		setupConstraints()
 	}
 	
@@ -36,9 +106,14 @@ class MenuBarView: UIView {
 	}
 	
 	func setupConstraints() {
-		addConstraintsWithFormat("H:|-50-[v0(46)]", views: filtersButton)
-		addConstraintsWithFormat("V:|-7-[v0(46)]-7-|", views: filtersButton)
+		addConstraintsWithFormat("H:|-5-[v0(44)]-5-[v1]-5-[v2(44)]-5-[v3(44)]-5-|", views: filtersButton, searchTextField ,searchButton, addButton)
+		addConstraintsWithFormat("V:|-5-[v0(44)]-5-|", views: filtersButton)
+		addConstraintsWithFormat("V:|-8-[v0]-8-|", views: searchTextField)
+		addConstraintsWithFormat("V:|-5-[v0(44)]-5-|", views: searchButton)
+		addConstraintsWithFormat("V:|-5-[v0(44)]-5-|", views: addButton)
 		
+//		addConstraintsWithFormat("H:|[v0]|", views: dividendLine)
+//		addConstraintsWithFormat("V:[v0(1)]|", views: dividendLine)
 	}
 	
 	
@@ -47,3 +122,5 @@ class MenuBarView: UIView {
 	
 
 }
+
+

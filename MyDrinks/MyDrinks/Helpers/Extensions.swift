@@ -20,3 +20,15 @@ extension UIView {
 		addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
 	}
 }
+
+extension UIColor {
+	class var backgroundColor: UIColor {
+		return UIColor(red: 239/255, green: 255/255, blue: 243/255, alpha: 1)
+	}
+	class var borderLineAndTintColor: UIColor {
+		return UIColor(red: 217/255, green: 48/255, blue: 63/255, alpha: 1)
+	}
+	class var textColor: UIColor {
+		return UIColor(red: 205/255, green: 13/255, blue: 55/255, alpha: 1)
+	}
+}

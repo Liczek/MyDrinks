@@ -13,6 +13,7 @@ class MainViewCell: UICollectionViewCell {
 	var drinkNameLabel: UILabel = {
 		let nameLabel = UILabel()
 		nameLabel.text = "No Name"
+		nameLabel.textColor = UIColor.textColor
 		nameLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
 		nameLabel.backgroundColor = UIColor.clear
 		nameLabel.textAlignment = .center
@@ -22,6 +23,7 @@ class MainViewCell: UICollectionViewCell {
 	var drinkBrandName: UILabel = {
 		let brandLabel = UILabel()
 		brandLabel.text = "No Name"
+		brandLabel.textColor = UIColor.textColor
 		brandLabel.font = UIFont.preferredFont(forTextStyle: .body)
 		brandLabel.backgroundColor = UIColor.clear
 		brandLabel.textAlignment = .center
@@ -41,10 +43,6 @@ class MainViewCell: UICollectionViewCell {
 		setupCell()
 		setConstraints()
 		
-		
-
-
-
 	}
 	
 	required init?(coder aDecoder: NSCoder) {

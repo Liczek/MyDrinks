@@ -11,8 +11,8 @@ import UIKit
 class MainViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 	
 	let cellID = "cellID"
-	let cellColors = [UIColor.green, UIColor.red, UIColor.orange, UIColor.yellow]
 	var database = [Beer]()
+	let menuBarHeight:CGFloat = 54
 	
 	lazy var menuBarView: MenuBarView = {
 		let mb = MenuBarView()
@@ -22,7 +22,7 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+		navigationController?.navigationBar.isTranslucent = false
 		
 		configureDatabase()
 		
@@ -42,7 +42,7 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
 	
 	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! MainViewCell
-		cell.backgroundColor = cellColors[indexPath.item]
+		cell.backgroundColor = UIColor.backgroundColor
 		let drink = database[indexPath.item]
 		cell.drinkNameLabel.text = drink.name
 		cell.drinkBrandName.text = drink.brandName
@@ -54,7 +54,7 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-		return CGSize(width: collectionView.frame.width, height: collectionView.frame.height - 130)
+		return CGSize(width: collectionView.frame.width, height: collectionView.frame.height - 54)
 	}
 	
 	func setupViews() {
@@ -69,12 +69,13 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
 			flowLayout.scrollDirection = .horizontal
 			flowLayout.minimumLineSpacing = 0
 		}
-		collectionView?.contentInset = UIEdgeInsetsMake(50, 0, 0, 0)
-		collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 0, 0)
+		collectionView?.contentInset = UIEdgeInsetsMake(menuBarHeight, 0, 0, 0)
+		collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(menuBarHeight, 0, 0, 0)
 	}
 	func setConstraints() {
+		let menuBarHeightInt: Int = Int(menuBarHeight)
 		view.addConstraintsWithFormat("H:|[v0]|", views: menuBarView)
-		view.addConstraintsWithFormat("V:|-63-[v0(60)]", views: menuBarView)
+		view.addConstraintsWithFormat("V:|[v0(\(menuBarHeightInt))]", views: menuBarView)
 		
 	}
 	
