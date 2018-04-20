@@ -66,8 +66,8 @@
 		DA4997B82087D24E00F3A65C /* MyDrinks */ = {
 			isa = PBXGroup;
 			children = (
-				DAA037382088A25F009D5241 /* MenuBarView.swift */,
 				DA4997BB2087D24E00F3A65C /* MainViewController.swift */,
+				DAA037382088A25F009D5241 /* MenuBarView.swift */,
 				DAA037332087E52E009D5241 /* Models */,
 				DA4997CE2087D94100F3A65C /* MainViewCell.swift */,
 				DA4997C32087D25000F3A65C /* Assets.xcassets */,

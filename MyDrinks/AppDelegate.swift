@@ -24,7 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		let mainViewController = MainViewController(collectionViewLayout: flowLayout)
 		window?.rootViewController = UINavigationController(rootViewController: mainViewController)
 		
-		
+		UINavigationBar.appearance().barTintColor = UIColor.backgroundColor
+		application.statusBarStyle = .default
 		
 		return true
 	}

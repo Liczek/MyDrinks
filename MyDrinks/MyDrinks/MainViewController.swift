@@ -19,20 +19,46 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
 		mb.mainViewController = self
 		return mb
 	}()
+	
+	lazy var rightArrowButton: UIButton = {
+		let button = UIButton(frame: CGRect(x: 0, y: 0, width: view.frame.width / 15, height: view.frame.height / 15))
+		button.tintColor = UIColor.borderLineAndTintColor
+		let originImage = UIImage(named: "arrow_next")
+		let tintedImage = originImage?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+		button.setImage(tintedImage, for: .normal)
+		button.translatesAutoresizingMaskIntoConstraints = false
+		return button
+	}()
+	
+	
+	lazy var leftArrowButton: UIButton = {
+		let button = UIButton(frame: CGRect(x: 0, y: 0, width: view.frame.width / 15, height: view.frame.height / 15))
+		button.tintColor = UIColor.borderLineAndTintColor
+		let originImage = UIImage(named: "arrow_previous")
+		let tintedImage = originImage?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+		button.setImage(tintedImage, for: .normal)
+		button.translatesAutoresizingMaskIntoConstraints = false
+		return button
+	}()
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		navigationController?.navigationBar.isTranslucent = false
 		
+		let titleLabel: UILabel = {
+			let label = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
+			label.text = "MyDrinks"
+			label.textColor = UIColor.borderLineAndTintColor
+			label.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)
+			label.textAlignment = .center
+			return label
+		}()
+		navigationItem.titleView = titleLabel
 		configureDatabase()
-		
-		title = "MyDrinks"
 		collectionView?.backgroundColor = UIColor.white
 		collectionView?.register(MainViewCell.self, forCellWithReuseIdentifier: cellID)
 		setupViews()
 		setConstraints()
-	
-		
 	}
 	
 	override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -60,6 +86,8 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
 	func setupViews() {
 		
 		view.addSubview(menuBarView)
+		view.addSubview(rightArrowButton)
+		view.addSubview(leftArrowButton)
 
 		
 		collectionView?.alwaysBounceHorizontal = true
@@ -76,7 +104,10 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
 		let menuBarHeightInt: Int = Int(menuBarHeight)
 		view.addConstraintsWithFormat("H:|[v0]|", views: menuBarView)
 		view.addConstraintsWithFormat("V:|[v0(\(menuBarHeightInt))]", views: menuBarView)
-		
+		view.addConstraintsWithFormat("H:[v0]|", views: rightArrowButton)
+		view.addConstraintsWithFormat("H:|[v0]", views: leftArrowButton)
+		rightArrowButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+		leftArrowButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
 	}
 	
 	func configureDatabase() {
