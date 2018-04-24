@@ -52,7 +52,7 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
 		let titleLabel: UILabel = {
 			let label = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
 			label.text = "MyDrinks"
-			label.textColor = UIColor.borderLineAndTintColor
+			label.textColor = UIColor.textColor
 			label.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)
 			label.textAlignment = .center
 			return label

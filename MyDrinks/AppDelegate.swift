@@ -25,11 +25,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		window?.rootViewController = UINavigationController(rootViewController: mainViewController)
 		
 		UINavigationBar.appearance().barTintColor = UIColor.backgroundColor
-		application.statusBarStyle = .default
+		application.statusBarStyle = .lightContent
 		
 		//get rid of navigation bar shadow
 		UINavigationBar.appearance().shadowImage = UIImage()
 		
+		let statusBarBackgroundView: UIView = {
+			let view = UIView()
+			view.backgroundColor = UIColor.borderLineAndTintColor
+			return view
+		}()
+		window?.addSubview(statusBarBackgroundView)
+		window?.addConstraintsWithFormat("H:|[v0]|", views: statusBarBackgroundView)
+		window?.addConstraintsWithFormat("V:|[v0(20)]", views: statusBarBackgroundView)
 
 		
 		return true

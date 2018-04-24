@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TableCell: UITableViewCell {
+class BottleCell: UITableViewCell {
 
 	var drinkNameLabel: UILabel = {
 		let nameLabel = UILabel()

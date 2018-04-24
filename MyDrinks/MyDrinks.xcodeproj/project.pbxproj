@@ -16,7 +16,9 @@
 		DAA037322087E525009D5241 /* Beer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA037312087E524009D5241 /* Beer.swift */; };
 		DAA037392088A25F009D5241 /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA037382088A25F009D5241 /* MenuBarView.swift */; };
 		DAA0373D2088B615009D5241 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA0373C2088B615009D5241 /* Extensions.swift */; };
-		DAA03746208E7B36009D5241 /* TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA03745208E7B36009D5241 /* TableCell.swift */; };
+		DAA03746208E7B36009D5241 /* BottleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA03745208E7B36009D5241 /* BottleCell.swift */; };
+		DAA0374A208F6031009D5241 /* RatingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA03749208F6031009D5241 /* RatingCell.swift */; };
+		DAA0374C208F74E6009D5241 /* ShakerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA0374B208F74E6009D5241 /* ShakerCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +33,9 @@
 		DAA037312087E524009D5241 /* Beer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beer.swift; sourceTree = "<group>"; };
 		DAA037382088A25F009D5241 /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
 		DAA0373C2088B615009D5241 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		DAA03745208E7B36009D5241 /* TableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCell.swift; sourceTree = "<group>"; };
+		DAA03745208E7B36009D5241 /* BottleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleCell.swift; sourceTree = "<group>"; };
+		DAA03749208F6031009D5241 /* RatingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingCell.swift; sourceTree = "<group>"; };
+		DAA0374B208F74E6009D5241 /* ShakerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakerCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +76,9 @@
 				DAA037382088A25F009D5241 /* MenuBarView.swift */,
 				DAA037332087E52E009D5241 /* Models */,
 				DA4997CE2087D94100F3A65C /* MainViewCell.swift */,
-				DAA03745208E7B36009D5241 /* TableCell.swift */,
+				DAA03745208E7B36009D5241 /* BottleCell.swift */,
+				DAA03749208F6031009D5241 /* RatingCell.swift */,
+				DAA0374B208F74E6009D5241 /* ShakerCell.swift */,
 				DA4997C32087D25000F3A65C /* Assets.xcassets */,
 				DAA0373E2088B61C009D5241 /* Helpers */,
 			);
@@ -167,10 +173,12 @@
 			files = (
 				DA4997BC2087D24E00F3A65C /* MainViewController.swift in Sources */,
 				DA4997CF2087D94100F3A65C /* MainViewCell.swift in Sources */,
-				DAA03746208E7B36009D5241 /* TableCell.swift in Sources */,
+				DAA03746208E7B36009D5241 /* BottleCell.swift in Sources */,
 				DAA037322087E525009D5241 /* Beer.swift in Sources */,
 				DAA037392088A25F009D5241 /* MenuBarView.swift in Sources */,
+				DAA0374C208F74E6009D5241 /* ShakerCell.swift in Sources */,
 				DA4997C22087D24E00F3A65C /* MyDrinks.xcdatamodeld in Sources */,
+				DAA0374A208F6031009D5241 /* RatingCell.swift in Sources */,
 				DA4997BA2087D24E00F3A65C /* AppDelegate.swift in Sources */,
 				DAA0373D2088B615009D5241 /* Extensions.swift in Sources */,
 			);

@@ -10,7 +10,8 @@ import UIKit
 
 class MainViewCell: UICollectionViewCell, UITableViewDelegate, UITableViewDataSource {
 	
-	let cellID = "cellID"
+	let bottleCellId = "bottleID"
+	let ratingCellId = "ratingID"
 	
 	
 	lazy var beerTableView: UITableView = {
@@ -18,17 +19,17 @@ class MainViewCell: UICollectionViewCell, UITableViewDelegate, UITableViewDataSo
 		table.delegate = self
 		table.dataSource = self
 		table.backgroundColor = UIColor.clear
+		table.separatorInset = UIEdgeInsetsMake(0, 16, 0, 16)
+		table.separatorColor = UIColor.borderLineAndTintColor
 		return table
 	}()
-	
-	
-	
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		
 		
-		beerTableView.register(TableCell.self, forCellReuseIdentifier: cellID)
+		beerTableView.register(BottleCell.self, forCellReuseIdentifier: bottleCellId)
+		beerTableView.register(RatingCell.self, forCellReuseIdentifier: ratingCellId)
 		setupCell()
 		setConstraints()
 		
@@ -51,17 +52,24 @@ class MainViewCell: UICollectionViewCell, UITableViewDelegate, UITableViewDataSo
 	
 	
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		if indexPath.row == 0 {
+			return beerTableView.frame.height - 30
+		} else if indexPath.row == 1 {
+			return beerTableView.frame.height / 5
+		} else {
+			return 0
+		}
 	
-		return beerTableView.frame.height - 20
+		
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		if indexPath.row == 0 {
-			let cell = beerTableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! TableCell
+			let cell = beerTableView.dequeueReusableCell(withIdentifier: bottleCellId, for: indexPath) as! BottleCell
 			cell.awakeFromNib()
 			return cell
 		} else if indexPath.row == 1 {
-			let cell = beerTableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! TableCell
+			let cell = beerTableView.dequeueReusableCell(withIdentifier: ratingCellId, for: indexPath) as! RatingCell
 			cell.awakeFromNib()
 			return cell
 		} else {
