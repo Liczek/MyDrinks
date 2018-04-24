@@ -27,6 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		UINavigationBar.appearance().barTintColor = UIColor.backgroundColor
 		application.statusBarStyle = .default
 		
+		//get rid of navigation bar shadow
+		UINavigationBar.appearance().shadowImage = UIImage()
+		
+
+		
 		return true
 	}
 

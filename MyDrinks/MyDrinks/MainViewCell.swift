@@ -8,38 +8,27 @@
 
 import UIKit
 
-class MainViewCell: UICollectionViewCell {
+class MainViewCell: UICollectionViewCell, UITableViewDelegate, UITableViewDataSource {
 	
-	var drinkNameLabel: UILabel = {
-		let nameLabel = UILabel()
-		nameLabel.text = "No Name"
-		nameLabel.textColor = UIColor.textColor
-		nameLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
-		nameLabel.backgroundColor = UIColor.clear
-		nameLabel.textAlignment = .center
-		return nameLabel
+	let cellID = "cellID"
+	
+	
+	lazy var beerTableView: UITableView = {
+		let table = UITableView()
+		table.delegate = self
+		table.dataSource = self
+		table.backgroundColor = UIColor.clear
+		return table
 	}()
 	
-	var drinkBrandName: UILabel = {
-		let brandLabel = UILabel()
-		brandLabel.text = "No Name"
-		brandLabel.textColor = UIColor.textColor
-		brandLabel.font = UIFont.preferredFont(forTextStyle: .body)
-		brandLabel.backgroundColor = UIColor.clear
-		brandLabel.textAlignment = .center
-		return brandLabel
-	}()
 	
-	var drinkImageView: UIImageView = {
-		let image = UIImageView()
-		image.layer.masksToBounds = true
-		image.contentMode = .scaleAspectFit
-		return image
-	}()
 	
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
+		
+		
+		beerTableView.register(TableCell.self, forCellReuseIdentifier: cellID)
 		setupCell()
 		setConstraints()
 		
@@ -49,19 +38,46 @@ class MainViewCell: UICollectionViewCell {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-
+	// MARK: - TableView
+	
+	func numberOfSections(in tableView: UITableView) -> Int {
+		return 1
+	}
+	
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return 2
+	}
+	
+	
+	
+	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+	
+		return beerTableView.frame.height - 20
+	}
+	
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		if indexPath.row == 0 {
+			let cell = beerTableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! TableCell
+			cell.awakeFromNib()
+			return cell
+		} else if indexPath.row == 1 {
+			let cell = beerTableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! TableCell
+			cell.awakeFromNib()
+			return cell
+		} else {
+			return UITableViewCell()
+		}
+	}
+	
+	
 	
 	func setupCell() {
-		addSubview(drinkNameLabel)
-		addSubview(drinkBrandName)
-		addSubview(drinkImageView)
+		addSubview(beerTableView)
 	}
 	
 	func setConstraints() {
-		addConstraintsWithFormat("H:|[v0]|", views: drinkNameLabel)
-		addConstraintsWithFormat("H:|[v0]|", views: drinkBrandName)
-		addConstraintsWithFormat("H:|[v0]|", views: drinkImageView)
-		addConstraintsWithFormat("V:|[v0]-2-[v1]-2-[v2]|", views: drinkNameLabel, drinkBrandName, drinkImageView)
+		addConstraintsWithFormat("H:|[v0]|", views: beerTableView)
+		addConstraintsWithFormat("V:|[v0]|", views: beerTableView)
 	}
 
 }

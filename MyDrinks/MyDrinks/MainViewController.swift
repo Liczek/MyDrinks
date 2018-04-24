@@ -45,6 +45,8 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
 		super.viewDidLoad()
 		navigationController?.navigationBar.isTranslucent = false
 		
+		configureDatabase()
+		
 		let titleLabel: UILabel = {
 			let label = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
 			label.text = "MyDrinks"
@@ -54,7 +56,6 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
 			return label
 		}()
 		navigationItem.titleView = titleLabel
-		configureDatabase()
 		collectionView?.backgroundColor = UIColor.white
 		collectionView?.register(MainViewCell.self, forCellWithReuseIdentifier: cellID)
 		setupViews()
@@ -69,13 +70,16 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
 	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! MainViewCell
 		cell.backgroundColor = UIColor.backgroundColor
-		let drink = database[indexPath.item]
-		cell.drinkNameLabel.text = drink.name
-		cell.drinkBrandName.text = drink.brandName
-		if let imageName = drink.imageName {
-			cell.drinkImageView.image = UIImage(named: imageName)
-		}
-		
+//		let table = cell.beerTableView
+//		let index = IndexPath(row: 0, section: 0)
+//		let tableCell = table.cellForRow(at: index) as! TableCell
+//		let drink = database[indexPath.item]
+//		tableCell.drinkNameLabel.text = drink.name
+//		tableCell.drinkBrandName.text = drink.brandName
+//		if let imageName = drink.imageName {
+//			let drinkImage = UIImage(named: imageName)
+//			tableCell.drinkImageView.image = drinkImage
+//		}
 		return cell
 	}
 	
@@ -143,7 +147,7 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
 			beer.imageName = "tropihoppi"
 			return beer
 		}()
-			database = [beer1, beer2, beer3, beer4]
+		database = [beer1, beer2, beer3, beer4]
 	}
 
 
