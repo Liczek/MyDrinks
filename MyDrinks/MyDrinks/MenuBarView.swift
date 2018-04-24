@@ -22,36 +22,10 @@ class MenuBarView: UIView {
 		return button
 	}()
 	
-//	let viewStyleButton: UIButton = {
-//		let button = UIButton()
-//		let origImage = UIImage(named: "list")
-//		button.tintColor = UIColor.borderLineAndTintColor
-//		let tintedImage = origImage?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
-//		button.setImage(tintedImage, for: UIControlState.normal)
-//		let origImage2 = UIImage(named: "grid")
-//		let tintedImage2 = origImage2?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
-//		button.setImage(tintedImage2, for: UIControlState.selected)
-//		button.contentMode = .center
-//		button.imageView?.contentMode = .scaleToFill
-//		button.backgroundColor = UIColor.clear
-//		return button
-//	}()
 	
 	let searchButton: UIButton = {
 		let button = UIButton()
 		let origImage = UIImage(named: "search_square")
-		button.tintColor = UIColor.borderLineAndTintColor
-		let tintedImage = origImage?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
-		button.setImage(tintedImage, for: UIControlState.normal)
-		button.contentMode = .center
-		button.imageView?.contentMode = .scaleToFill
-		button.backgroundColor = UIColor.clear
-		return button
-	}()
-	
-	let addButton: UIButton = {
-		let button = UIButton()
-		let origImage = UIImage(named: "add")
 		button.tintColor = UIColor.borderLineAndTintColor
 		let tintedImage = origImage?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
 		button.setImage(tintedImage, for: UIControlState.normal)
@@ -95,7 +69,6 @@ class MenuBarView: UIView {
 		backgroundColor = UIColor.backgroundColor
 		addSubview(filtersButton)
 		addSubview(searchButton)
-		addSubview(addButton)
 		addSubview(searchTextField)
 		addSubview(dividendLine)
 		setupConstraints()
@@ -106,11 +79,10 @@ class MenuBarView: UIView {
 	}
 	
 	func setupConstraints() {
-		addConstraintsWithFormat("H:|-5-[v0(44)]-5-[v1]-5-[v2(44)]-5-[v3(44)]-5-|", views: filtersButton, searchTextField ,searchButton, addButton)
+		addConstraintsWithFormat("H:|-5-[v0(44)]-5-[v1]-5-[v2(44)]-5-|", views: filtersButton, searchTextField ,searchButton)
 		addConstraintsWithFormat("V:|-5-[v0(44)]-5-|", views: filtersButton)
 		addConstraintsWithFormat("V:|-8-[v0]-8-|", views: searchTextField)
 		addConstraintsWithFormat("V:|-5-[v0(44)]-5-|", views: searchButton)
-		addConstraintsWithFormat("V:|-5-[v0(44)]-5-|", views: addButton)
 		
 //		addConstraintsWithFormat("H:|[v0]|", views: dividendLine)
 //		addConstraintsWithFormat("V:[v0(1)]|", views: dividendLine)

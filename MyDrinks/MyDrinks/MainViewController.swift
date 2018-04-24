@@ -40,6 +40,8 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
 		button.translatesAutoresizingMaskIntoConstraints = false
 		return button
 	}()
+	
+	
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -55,7 +57,28 @@ class MainViewController: UICollectionViewController, UICollectionViewDelegateFl
 			label.textAlignment = .center
 			return label
 		}()
+		
+		let addButton: UIBarButtonItem = {
+			let button = UIBarButtonItem()
+			let image = UIImage(named: "add")?.withRenderingMode(.alwaysTemplate)
+			button.tintColor = UIColor.borderLineAndTintColor
+			button.image = image
+			return button
+		}()
+		
+		let viewStyleButton: UIBarButtonItem = {
+			let button = UIBarButtonItem()
+			let origImage = UIImage(named: "grid")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+			button.tintColor = UIColor.borderLineAndTintColor
+			button.image = origImage
+			return button
+		}()
+		
 		navigationItem.titleView = titleLabel
+		navigationItem.rightBarButtonItem = addButton
+		navigationItem.rightBarButtonItem?.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -14.8)
+		navigationItem.leftBarButtonItem = viewStyleButton
+		navigationItem.leftBarButtonItem?.imageInsets = UIEdgeInsets(top: 0, left: -14.8, bottom: 0, right: 0)
 		collectionView?.backgroundColor = UIColor.white
 		collectionView?.register(MainViewCell.self, forCellWithReuseIdentifier: cellID)
 		setupViews()
